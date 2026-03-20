@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-test('home page renders and snippet copy flow works', async ({ page }) => {
+test('home page renders with keyboard and typing prompt', async ({ page }) => {
   const pageErrors: Error[] = []
   page.on('pageerror', (error) => {
     pageErrors.push(error)
@@ -8,15 +8,13 @@ test('home page renders and snippet copy flow works', async ({ page }) => {
 
   await page.goto('/')
 
-  await expect(page.getByRole('link', { name: 'TanStack' })).toBeVisible()
-  await expect(page.getByRole('link', { name: 'shadcn/ui' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: /typling/i })).toBeVisible()
+
   await expect(
-    page.getByRole('heading', { name: /starter kit/i })
+    page.getByRole('radiogroup', { name: 'Memory mode' })
   ).toBeVisible()
 
-  const copyButton = page.getByRole('button', { name: 'Copy to clipboard' })
-  await copyButton.click()
+  await expect(page.getByLabel('Typing prompt')).toBeVisible()
 
-  await expect(copyButton).toBeVisible()
   expect(pageErrors).toHaveLength(0)
 })
