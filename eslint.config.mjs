@@ -10,6 +10,8 @@ export default tseslint.config(
   {
     ignores: [
       '.output/**',
+      '.vercel/**',
+      '.tanstack/**',
       'dist/**',
       'coverage/**',
       'node_modules/**',

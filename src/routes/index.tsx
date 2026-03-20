@@ -73,13 +73,13 @@ function Home() {
     return () => clearInterval(interval)
   }, [startTime, isComplete])
 
-  function resetTest() {
+  const resetTest = useCallback(() => {
     setTypedChars([])
     setStartTime(null)
     setElapsedSeconds(0)
     setErrorCount(0)
     regenerateHidden(prompt, mode)
-  }
+  }, [prompt, mode])
 
   function handleModeChange(newMode: MemoryMode) {
     setMode(newMode)
@@ -180,7 +180,7 @@ function Home() {
       window.removeEventListener('keyup', handleKeyUp)
       window.removeEventListener('blur', handleBlur)
     }
-  }, [sidebarOpen, prompt.length, prompt])
+  }, [sidebarOpen, prompt.length, prompt, resetTest])
 
   return (
     <LazyMotion features={domAnimation}>
