@@ -1,0 +1,165 @@
+@import 'tailwindcss' source('../');
+@import 'tw-animate-css';
+
+@font-face {
+  font-family: 'Departure Mono';
+  src:
+    url('../assets/fonts/DepartureMono-Regular.woff2') format('woff2'),
+    url('../assets/fonts/DepartureMono-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-mono: 'Departure Mono', ui-monospace, monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+}
+
+/* ── Snow (light, safe neutral) ── default ── */
+:root,
+:root[data-theme='snow'] {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.13 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.45 0 0);
+  --border: oklch(0.85 0 0);
+  --ring: oklch(0.65 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+}
+
+/* ── Solarized (light, bold warm) ── */
+:root[data-theme='bone'] {
+  --background: oklch(0.96 0.02 90);
+  --foreground: oklch(0.28 0.06 230);
+  --muted: oklch(0.92 0.025 90);
+  --muted-foreground: oklch(0.52 0.04 200);
+  --border: oklch(0.86 0.025 90);
+  --ring: oklch(0.6 0.05 200);
+  --destructive: oklch(0.55 0.22 25);
+}
+
+/* ── Lavender (light, bold cool) ── */
+:root[data-theme='fog'] {
+  --background: oklch(0.96 0.02 290);
+  --foreground: oklch(0.22 0.06 285);
+  --muted: oklch(0.92 0.025 290);
+  --muted-foreground: oklch(0.5 0.04 285);
+  --border: oklch(0.86 0.03 290);
+  --ring: oklch(0.55 0.06 285);
+  --destructive: oklch(0.55 0.22 15);
+}
+
+/* ── Midnight (dark, safe neutral) ── */
+:root[data-theme='midnight'] {
+  --background: oklch(0.13 0 0);
+  --foreground: oklch(0.9 0 0);
+  --muted: oklch(0.19 0 0);
+  --muted-foreground: oklch(0.52 0 0);
+  --border: oklch(0.24 0 0);
+  --ring: oklch(0.45 0 0);
+  --destructive: oklch(0.65 0.22 25);
+}
+
+/* ── Terminal (dark, bold green phosphor) ── */
+:root[data-theme='terminal'] {
+  --background: oklch(0.08 0.01 155);
+  --foreground: oklch(0.85 0.22 145);
+  --muted: oklch(0.13 0.03 155);
+  --muted-foreground: oklch(0.55 0.12 145);
+  --border: oklch(0.2 0.06 150);
+  --ring: oklch(0.6 0.14 145);
+  --destructive: oklch(0.6 0.22 30);
+}
+
+/* ── Ember (dark, bold copper/orange) ── */
+:root[data-theme='ember'] {
+  --background: oklch(0.12 0.025 45);
+  --foreground: oklch(0.88 0.08 60);
+  --muted: oklch(0.18 0.03 45);
+  --muted-foreground: oklch(0.55 0.06 55);
+  --border: oklch(0.25 0.04 50);
+  --ring: oklch(0.5 0.06 55);
+  --destructive: oklch(0.6 0.2 20);
+}
+
+/* ── Disable transitions during theme switch ── */
+.no-transitions,
+.no-transitions *,
+.no-transitions *::before,
+.no-transitions *::after {
+  transition-duration: 0s !important;
+}
+
+/* ── CRT scan lines ── */
+.crt-scanlines {
+  position: relative;
+}
+.crt-scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    var(--foreground) 2px,
+    var(--foreground) 3px
+  );
+  opacity: 0.025;
+  pointer-events: none;
+}
+
+/* ── CRT boot flicker ── */
+@keyframes crt-boot {
+  0% { opacity: 0; }
+  4% { opacity: 0.7; }
+  8% { opacity: 0; }
+  12% { opacity: 0.4; }
+  16% { opacity: 0; }
+  22% { opacity: 0.85; }
+  28% { opacity: 0.3; }
+  36% { opacity: 0.9; }
+  44% { opacity: 0.7; }
+  55% { opacity: 1; }
+  65% { opacity: 0.92; }
+  100% { opacity: 1; }
+}
+
+@keyframes crt-glow-pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@keyframes crt-static {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 -200px; }
+}
+
+.crt-boot-anim {
+  animation: crt-boot 0.8s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-boot-anim {
+    animation: none;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-mono antialiased;
+  }
+}
