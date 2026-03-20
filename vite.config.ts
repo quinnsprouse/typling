@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import tsConfigPaths from 'vite-tsconfig-paths'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { nitro } from 'nitro/vite'
 import tailwindcss from '@tailwindcss/vite'
 import viteReact from '@vitejs/plugin-react'
 
@@ -9,7 +10,6 @@ export default defineConfig({
     port: 3000,
   },
   build: {
-    outDir: '.output',
     rollupOptions: {
       onwarn(warning, warn) {
         const warningFromTanStackStartDependency =
@@ -27,7 +27,8 @@ export default defineConfig({
   },
   plugins: [
     tsConfigPaths(),
-    tanstackStart({ spa: { enabled: true } }),
+    tanstackStart(),
+    nitro({ preset: 'vercel' }),
     viteReact(),
     tailwindcss(),
   ],
