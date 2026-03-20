@@ -25,5 +25,10 @@ export default defineConfig({
       },
     },
   },
-  plugins: [tsConfigPaths(), tanstackStart(), viteReact(), tailwindcss()],
+  plugins: [
+    tsConfigPaths(),
+    tanstackStart({ spa: { enabled: true } }),
+    viteReact(),
+    tailwindcss(),
+  ],
 })
