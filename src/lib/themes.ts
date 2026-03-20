@@ -44,9 +44,7 @@ export const THEMES: ThemeDef[] = [
   },
 ]
 
-const DARK_THEME_IDS = new Set(
-  THEMES.filter((t) => t.isDark).map((t) => t.id),
-)
+const DARK_THEME_IDS = new Set(THEMES.filter((t) => t.isDark).map((t) => t.id))
 
 export const DEFAULT_THEME = 'snow'
 

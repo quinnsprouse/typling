@@ -49,7 +49,7 @@ export function ThemePicker() {
           'h-11 px-3 rounded-md',
           'text-[11px] uppercase tracking-[0.15em] text-muted-foreground',
           'transition-[color] duration-150 ease',
-          'hover:text-foreground',
+          'hover:text-foreground'
         )}
         aria-label="Change theme"
         aria-expanded={open}
@@ -75,7 +75,7 @@ export function ThemePicker() {
                 className={cn(
                   'group relative flex h-11 w-11 items-center justify-center rounded-md',
                   'transition-[box-shadow] duration-100 ease-out',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
                 )}
                 role="radio"
                 aria-checked={activeTheme === theme.id}
@@ -88,7 +88,7 @@ export function ThemePicker() {
                     'transition-[transform] duration-100 ease-out',
                     activeTheme === theme.id
                       ? 'scale-100 ring-2 ring-foreground/20 ring-offset-2 ring-offset-background'
-                      : 'scale-90 opacity-70',
+                      : 'scale-90 opacity-70'
                   )}
                   style={{
                     backgroundColor: theme.preview.bg,

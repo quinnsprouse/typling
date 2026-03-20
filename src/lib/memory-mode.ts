@@ -26,11 +26,10 @@ function pickHiddenWords(wordCount: number): Set<number> {
  */
 export function computeHiddenChars(
   prompt: string,
-  mode: MemoryMode,
+  mode: MemoryMode
 ): boolean[] {
   if (mode === 'full') return new Array(prompt.length).fill(false) as boolean[]
-  if (mode === 'recall')
-    return new Array(prompt.length).fill(true) as boolean[]
+  if (mode === 'recall') return new Array(prompt.length).fill(true) as boolean[]
 
   // Partial: randomly hide words, keep spaces visible
   const words = prompt.split(' ')

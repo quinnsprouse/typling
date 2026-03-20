@@ -81,9 +81,7 @@ export function Sidebar({
 }: SidebarProps) {
   const prefersReducedMotion = useReducedMotion()
   const [library, setLibrary] = useState<Library>(loadLibrary)
-  const [expandedFolders, setExpandedFolders] = useState<Set<string>>(
-    new Set(),
-  )
+  const [expandedFolders, setExpandedFolders] = useState<Set<string>>(new Set())
   const [presetsExpanded, setPresetsExpanded] = useState(true)
   const [inlineForm, setInlineForm] = useState<InlineForm>(null)
 
@@ -150,7 +148,7 @@ export function Sidebar({
   function handleCreatePrompt(
     title: string,
     text: string,
-    folderId: string | null,
+    folderId: string | null
   ) {
     if (title.trim().length === 0 || text.trim().length === 0) return
     setLibrary(addPrompt(library, title, text, folderId))
@@ -249,9 +247,7 @@ export function Sidebar({
                       <InlineTextInput
                         defaultValue={inlineForm.currentName}
                         placeholder="folder name..."
-                        onSubmit={(name) =>
-                          handleRenameFolder(folder.id, name)
-                        }
+                        onSubmit={(name) => handleRenameFolder(folder.id, name)}
                         onCancel={() => setInlineForm(null)}
                       />
                     ) : (
@@ -307,7 +303,7 @@ export function Sidebar({
                               }
                               onDelete={() => handleDeletePrompt(p.id)}
                             />
-                          ),
+                          )
                         )}
 
                         {isAddingHere ? (
@@ -364,7 +360,7 @@ export function Sidebar({
                     }
                     onDelete={() => handleDeletePrompt(p.id)}
                   />
-                ),
+                )
               )}
 
               {/* ─── New folder inline ─── */}
@@ -440,7 +436,7 @@ function FolderHeader({
         <span
           className={cn(
             'text-[8px] text-muted-foreground transition-transform duration-100',
-            isExpanded && 'rotate-90',
+            isExpanded && 'rotate-90'
           )}
           aria-hidden="true"
         >
@@ -516,7 +512,7 @@ function PromptRow({
           'transition-[background-color,color] duration-100 ease-out',
           isActive
             ? 'bg-foreground/[0.06] text-foreground'
-            : 'text-foreground/70 hover:bg-foreground/[0.03] hover:text-foreground',
+            : 'text-foreground/70 hover:bg-foreground/[0.03] hover:text-foreground'
         )}
       >
         <span className="text-[12px] leading-tight">{title}</span>
@@ -651,9 +647,7 @@ function InlinePromptForm({
         className="bg-transparent text-[12px] leading-relaxed text-foreground/80 placeholder:text-muted-foreground/30 focus:outline-none resize-none min-h-[60px]"
       />
       <div className="flex items-center justify-between pt-1">
-        <span className="text-[10px] text-muted-foreground/30">
-          ⌘↵ to save
-        </span>
+        <span className="text-[10px] text-muted-foreground/30">⌘↵ to save</span>
         <div className="flex gap-1">
           <button
             onClick={onCancel}
@@ -669,7 +663,7 @@ function InlinePromptForm({
               'bg-foreground text-background',
               'disabled:opacity-30 disabled:cursor-not-allowed',
               'hover:not-disabled:opacity-80',
-              'transition-opacity duration-100 ease-out',
+              'transition-opacity duration-100 ease-out'
             )}
           >
             save

@@ -49,12 +49,12 @@ export function addFolder(library: Library, name: string): Library {
 export function renameFolder(
   library: Library,
   folderId: string,
-  name: string,
+  name: string
 ): Library {
   const next: Library = {
     ...library,
     folders: library.folders.map((f) =>
-      f.id === folderId ? { ...f, name: name.trim() } : f,
+      f.id === folderId ? { ...f, name: name.trim() } : f
     ),
   }
   save(next)
@@ -74,7 +74,7 @@ export function addPrompt(
   library: Library,
   title: string,
   text: string,
-  folderId: string | null,
+  folderId: string | null
 ): Library {
   const next: Library = {
     ...library,
@@ -96,12 +96,12 @@ export function updatePrompt(
   library: Library,
   promptId: string,
   title: string,
-  text: string,
+  text: string
 ): Library {
   const next: Library = {
     ...library,
     prompts: library.prompts.map((p) =>
-      p.id === promptId ? { ...p, title: title.trim(), text: text.trim() } : p,
+      p.id === promptId ? { ...p, title: title.trim(), text: text.trim() } : p
     ),
   }
   save(next)
@@ -119,7 +119,7 @@ export function deletePrompt(library: Library, promptId: string): Library {
 
 export function getFolderPrompts(
   library: Library,
-  folderId: string,
+  folderId: string
 ): SavedPrompt[] {
   return library.prompts.filter((p) => p.folderId === folderId)
 }

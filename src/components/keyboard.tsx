@@ -98,15 +98,12 @@ function Key({ keyDef, isPressed }: { keyDef: KeyDef; isPressed: boolean }) {
           ? 'justify-between items-start'
           : isLetter
             ? 'justify-center items-center'
-            : 'justify-end items-start',
+            : 'justify-end items-start'
       )}
     >
       {shiftLabel && (
         <span
-          className={cn(
-            'text-[10px]',
-            isPressed ? 'opacity-60' : 'opacity-35',
-          )}
+          className={cn('text-[10px]', isPressed ? 'opacity-60' : 'opacity-35')}
         >
           {shiftLabel}
         </span>

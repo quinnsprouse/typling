@@ -121,28 +121,61 @@
 
 /* ── CRT boot flicker ── */
 @keyframes crt-boot {
-  0% { opacity: 0; }
-  4% { opacity: 0.7; }
-  8% { opacity: 0; }
-  12% { opacity: 0.4; }
-  16% { opacity: 0; }
-  22% { opacity: 0.85; }
-  28% { opacity: 0.3; }
-  36% { opacity: 0.9; }
-  44% { opacity: 0.7; }
-  55% { opacity: 1; }
-  65% { opacity: 0.92; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  4% {
+    opacity: 0.7;
+  }
+  8% {
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.4;
+  }
+  16% {
+    opacity: 0;
+  }
+  22% {
+    opacity: 0.85;
+  }
+  28% {
+    opacity: 0.3;
+  }
+  36% {
+    opacity: 0.9;
+  }
+  44% {
+    opacity: 0.7;
+  }
+  55% {
+    opacity: 1;
+  }
+  65% {
+    opacity: 0.92;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes crt-glow-pulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 @keyframes crt-static {
-  0% { background-position: 0 0; }
-  100% { background-position: 0 -200px; }
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 -200px;
+  }
 }
 
 .crt-boot-anim {

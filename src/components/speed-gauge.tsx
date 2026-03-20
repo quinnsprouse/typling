@@ -52,7 +52,7 @@ export function SpeedGauge({
         'transition-[opacity,border-color] duration-300 ease-out',
         !isActive && 'opacity-25 border-foreground/10',
         isActive && !isComplete && 'opacity-40 border-foreground/10',
-        isComplete && 'opacity-100 border-foreground/20 crt-boot-anim',
+        isComplete && 'opacity-100 border-foreground/20 crt-boot-anim'
       )}
       role="status"
       aria-label={`Speed: ${Math.round(wpm)} words per minute, Accuracy: ${Math.round(accuracy)} percent`}

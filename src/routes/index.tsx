@@ -34,7 +34,7 @@ function Home() {
   // Hidden chars stored as state so we can regenerate with fresh randomness
   // on every reset, mode change, or prompt change.
   const [hiddenChars, setHiddenChars] = useState(() =>
-    computeHiddenChars(DEFAULT_PROMPT, 'full'),
+    computeHiddenChars(DEFAULT_PROMPT, 'full')
   )
 
   function regenerateHidden(p: string, m: MemoryMode) {
@@ -101,7 +101,7 @@ function Home() {
       setErrorCount(0)
       regenerateHidden(text, mode)
     },
-    [mode],
+    [mode]
   )
 
   useEffect(() => {
@@ -120,11 +120,7 @@ function Home() {
         // Cycle modes: full → partial → recall → full
         setMode((prev) => {
           const next =
-            prev === 'full'
-              ? 'partial'
-              : prev === 'partial'
-                ? 'recall'
-                : 'full'
+            prev === 'full' ? 'partial' : prev === 'partial' ? 'recall' : 'full'
           setTypedChars([])
           setStartTime(null)
           setElapsedSeconds(0)
@@ -196,7 +192,7 @@ function Home() {
           'h-11 px-3 rounded-md',
           'text-[11px] uppercase tracking-[0.15em] text-muted-foreground',
           'transition-[color] duration-150 ease',
-          'hover:text-foreground',
+          'hover:text-foreground'
         )}
         aria-label="Open settings"
       >
@@ -242,11 +238,7 @@ function Home() {
 
               // Hidden chars show underscore until typed
               const showBlank = isHidden && !isTyped
-              const displayChar = showBlank
-                ? char === ' '
-                  ? ' '
-                  : '_'
-                : char
+              const displayChar = showBlank ? (char === ' ' ? ' ' : '_') : char
 
               return (
                 <span
@@ -256,7 +248,7 @@ function Home() {
                     isCorrect && 'text-foreground',
                     isWrong && 'text-destructive',
                     !isTyped &&
-                      (isHidden ? 'text-foreground/8' : 'text-foreground/20'),
+                      (isHidden ? 'text-foreground/8' : 'text-foreground/20')
                   )}
                 >
                   {isCurrent && (

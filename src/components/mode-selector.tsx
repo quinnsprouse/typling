@@ -33,7 +33,7 @@ export function ModeSelector({
                 'transition-[background-color,color] duration-100 ease-out',
                 isActive
                   ? 'bg-foreground text-background'
-                  : 'text-muted-foreground hover:text-foreground',
+                  : 'text-muted-foreground hover:text-foreground'
               )}
               role="radio"
               aria-checked={isActive}
