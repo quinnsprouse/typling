@@ -9,7 +9,6 @@ import {
 } from '@tanstack/react-router'
 import appCss from '@/styles/app.css?url'
 import { AgentationDevtool } from '@/components/agentation-devtool'
-import { ThemePicker } from '@/components/theme-picker'
 import { themeInitScript } from '@/lib/themes'
 
 export const Route = createRootRoute({
@@ -58,7 +57,6 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <HeadContent />
       </head>
       <body>
-        <ThemePicker />
         {children}
         <AgentationDevtool />
         <Scripts />

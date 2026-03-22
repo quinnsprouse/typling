@@ -6,6 +6,7 @@ import { SpeedGauge } from '@/components/speed-gauge'
 import { ModeSelector } from '@/components/mode-selector'
 import { computeHiddenChars, type MemoryMode } from '@/lib/memory-mode'
 import { Sidebar } from '@/components/sidebar'
+import { ThemePicker } from '@/components/theme-picker'
 import { cn } from '@/lib/utils'
 
 export const Route = createFileRoute('/app')({
@@ -184,6 +185,7 @@ function Home() {
 
   return (
     <LazyMotion features={domAnimation}>
+      <ThemePicker />
       <button
         onClick={() => setSidebarOpen(true)}
         className={cn(
